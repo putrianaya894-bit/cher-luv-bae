@@ -1,0 +1,350 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blue Night For You 💙</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top, #204a7a 0%, #0d1b2a 40%, #050b14 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: white;
+      padding: 30px;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#8ecbff 1px, transparent 1px);
+      background-size: 60px 60px;
+      background-position: 0 0, 30px 30px;
+      opacity: 0.35;
+      animation: twinkle 6s infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 0.5; }
+    }
+
+    .moon {
+      position: absolute;
+      top: 60px;
+      right: 80px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff, #b6dcff);
+      box-shadow: 0 0 60px rgba(182,220,255,0.7);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(14px);
+      border-radius: 35px;
+      padding: 35px 28px;
+      text-align: center;
+      box-shadow:
+        0 0 20px rgba(98, 176, 255, 0.25),
+        0 0 60px rgba(0, 119, 255, 0.15);
+      animation: floating 4s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      color: #d3e8ff;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .frog {
+      font-size: 60px;
+      animation: bounce 2s infinite;
+      margin-bottom: 8px;
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .bouquet-3d {
+      font-size: 72px;
+      filter: drop-shadow(0 0 15px rgba(125, 196, 255, 0.8));
+      transform: rotate(-5deg);
+      animation: spinFloat 5s ease-in-out infinite;
+      margin: 10px 0 20px;
+    }
+
+    @keyframes spinFloat {
+      0%,100% {
+        transform: rotate(-5deg) translateY(0px);
+      }
+      50% {
+        transform: rotate(5deg) translateY(-8px);
+      }
+    }
+
+    .message {
+      background: rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 18px;
+      line-height: 1.8;
+      color: #e7f3ff;
+      font-size: 0.96rem;
+      margin-bottom: 20px;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 13px 22px;
+      border-radius: 999px;
+      margin: 8px 5px;
+      color: white;
+      font-weight: 600;
+      transition: 0.3s ease;
+      background: linear-gradient(90deg, #4aa8ff, #82cbff);
+      box-shadow: 0 8px 20px rgba(74,168,255,0.35);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .game-box {
+      margin-top: 25px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 24px;
+      padding: 20px;
+    }
+
+    .game-title {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #d8eeff;
+    }
+
+    .gift-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .gift {
+      background: rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 14px;
+      font-size: 28px;
+      cursor: pointer;
+      transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .gift:hover {
+      transform: scale(1.08);
+      background: rgba(125,196,255,0.15);
+    }
+
+    .result {
+      margin-top: 15px;
+      color: #dff2ff;
+      min-height: 30px;
+      font-size: 0.95rem;
+    }
+
+    .heart {
+      position: fixed;
+      color: rgba(255,255,255,0.7);
+      animation: rise linear forwards;
+      z-index: 99;
+      pointer-events: none;
+    }
+
+    @keyframes rise {
+      from {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(-120px) scale(1.4);
+        opacity: 1;
+      }
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: #b8d8ff;
+      opacity: 0.9;
+    }
+
+    @media(max-width: 480px) {
+      .card {
+        padding: 28px 20px;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      .bouquet-3d {
+        font-size: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars"></div>
+  <div class="moon"></div>
+
+  <div class="container">
+    <div class="card">
+
+      <h1>For Someone Special 💙</h1>
+      <div class="subtitle">soft blue night aesthetic</div>
+
+      <div class="frog">🐸</div>
+
+      <div class="bouquet-3d">💐</div>
+
+      <div class="message" id="message">
+        Haiii ✨<br><br>
+        Semoga malam kamu tenang seperti langit biru ini 🌌<br>
+        Jangan lupa istirahat yaa dan tetap jadi orang keren 💙
+      </div>
+
+      <button onclick="changeMessage()">Surprise ✨</button>
+      <button onclick="createHearts()">Blue Hearts 💙</button>
+
+      <div class="game-box">
+        <div class="game-title">Mini Game 🎮</div>
+        <p>Pilih gift yang paling beruntung ✨</p>
+
+        <div class="gift-grid">
+          <div class="gift" onclick="openGift(this)">🎁</div>
+          <div class="gift" onclick="openGift(this)">🎁</div>
+          <div class="gift" onclick="openGift(this)">🎁</div>
+          <div class="gift" onclick="openGift(this)">🎁</div>
+          <div class="gift" onclick="openGift(this)">🎁</div>
+          <div class="gift" onclick="openGift(this)">🎁</div>
+        </div>
+
+        <div class="result" id="result">
+          Cari hadiah spesialmu 💫
+        </div>
+      </div>
+
+      <div class="footer">
+        made with blue night energy 🌙
+      </div>
+
+    </div>
+  </div>
+
+  <audio autoplay loop>
+    <source src="https://files.catbox.moe/8f6m7v.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+
+    const messages = [
+      'Kamu itu spesial banget 💙',
+      'Semoga hari kamu selalu seindah malam ini 🌌',
+      'Kalau capek jangan dipendem sendiri yaa ✨',
+      'Buket ini buat orang paling keren 🌸',
+      'Aku harap senyum kamu selalu ada 🫶',
+      'Blue night ini kalah cantik dibanding kamu 💫'
+    ];
+
+    function changeMessage() {
+      const random = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById('message').innerHTML = random;
+      createHearts();
+    }
+
+    function createHearts() {
+      for(let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = ['💙','✨','🌌'][Math.floor(Math.random()*3)];
+
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = (Math.random() * 20 + 18) + 'px';
+        heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+      }
+    }
+
+    const gifts = [
+      '💙 Kamu dapat blue heart!',
+      '🌌 Night sky wishes for you!',
+      '✨ Secret lucky star unlocked!',
+      '🐸 Kodok lucu menemanimu!',
+      '💐 Bouquet spesial untukmu!',
+      '🫶 Kamu berhasil menemukan hadiah manis!'
+    ];
+
+    function openGift(element) {
+      const randomGift = gifts[Math.floor(Math.random() * gifts.length)];
+      document.getElementById('result').innerHTML = randomGift;
+
+      element.innerHTML = '💙';
+      element.style.background = 'rgba(125,196,255,0.2)';
+
+      createHearts();
+    }
+
+  </script>
+</body>
+</html>
+```
